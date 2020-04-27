@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "belligerent-Madness";
+    src: url("../fonts/belligerent.ttf");
+}
+@font-face {
+    font-family: "segoeprb";
+    src: url("../fonts/segoeprb.ttf");
+}
+
+main, nav, footer {
+    font-family: segoeprb, Arial, Helvetica, sans-serif;
+}
+
+header, footer {
+    background-color: rgb(243,233,241);
+}
+
+.header, .footer {
+    display: flex;
+    align-items: center;
+    height: 120px;
+    padding: 30px;
+}
+
+.header img, .footer img {
+    width: 100px;
+    height: 100px;
+}
+
+.header h1 {
+    margin-left: 20px;
+    font-size: 4em;
+    font-family: belligerent-Madness, Arial, Helvetica, sans-serif;
+    position: relative;
+    top: 10px;
+}
+
+.footer {
+    justify-content: space-between;
+}
+
+.footer img, .footer p {
+    margin: 0 20px;
+}
+
+.footer p {
+    font-size: 1.5em;
+}

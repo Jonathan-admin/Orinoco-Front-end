@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="vente en ligne, orinoco, caméra, acheter une caméra, e-commerce, vente de caméra, caméra vintage">
+        <meta name="description" content="Orinoco est un site e-commerce proposant la vente de produits par thématique. Besoin d'un produit rapidemment ? Orinoco est là pour vous !">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="styles/productsList.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script>
+        <script src="scripts/afficher-liste-produits.js" defer></script>
+
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+        <title>Orinoco - Vente en ligne de caméra</title>
+    </head>
+    <body>
+        <header class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-2 header justify-content-center">
+                <img src="images/logo-orinoco.png" alt="Logo de Orinoco" />
+                <h1>Orinoco</h1>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index.html">Articles disponibles<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/cart.html">Mon panier</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="container">
+            <section>
+                <h2>Liste des produits disponibles à la vente</h2>
+    
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Aperçu</th>
+                        <th>Désignation</th>
+                        <th>Prix</th>
+                    </tr>
+                    </thead>
+                    <tbody id="content-list">
+
+                    </tbody>
+                </table>
+
+            </section>
+        </main>
+        <footer class="row">
+            <div class="col-lg-12 footer">
+                <img src="images/OC-logo.png" alt="Logo d'OpenClassrooms" />
+                <p>Projet 5 - Orinoco</p>
+            </div>
+        </footer>
+    </body>
+</html>
