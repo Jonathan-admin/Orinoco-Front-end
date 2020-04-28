@@ -35,6 +35,14 @@ header, footer {
     top: 10px;
 }
 
+h2 {
+    margin: 30px 0;
+}
+
+main {
+    padding: 20px 10px;
+    margin-bottom: 40px;
+}
 .footer {
     justify-content: space-between;
 }

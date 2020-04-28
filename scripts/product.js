@@ -36,15 +36,38 @@ window.onload = function () {
 var cart = document.getElementById("addCart");
 cart.addEventListener("click", function(event) {
     addCart(objProduct,id);
-    //supprCart();
 });
 
-function supprCart() {
-    localStorage.clear();
+function addCart(obj) {
+    var index = 0;
+    regex = /^[a-z0-9]{24}$/;
+    while ((!regex.test(localStorage.key(index))&&index<localStorage.length)||localStorage.length==0) {
+        var val = [obj,1]; alert("poste 1");
+        localStorage.setItem(obj._id,JSON.stringify(val));
+        index++;
+        return 0;
+    }
+    for (let index = 0; index < localStorage.length; index++) {
+        var key = localStorage.key(index); 
+        if(obj._id==key) {  alert("poste 2");
+            var val = [obj,parseInt(JSON.parse(localStorage.getItem(obj._id))[1],10)+1];
+            localStorage.setItem(obj._id,JSON.stringify(val));
+            index =  localStorage.length;
+            return 0;
+        }
+    }
+    var val = [obj,1]; alert("poste 3");
+    localStorage.setItem(obj._id,JSON.stringify(val));
+    return 0;
 }
 
-function addCart(obj,id) {
-    localStorage.setItem("cart",obj);
-  
-}
+
+
+
+
+
+
+
+            
+
 

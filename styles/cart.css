@@ -1,0 +1,12 @@
+i.fa-check-circle {
+    font-size: 1.1em;
+    color: green;
+}
+i.fa-times-circle {
+    color: red;
+}
+.error {
+    display: block;
+    font-size: 0.8em;
+    margin-right: 20px;
+}
