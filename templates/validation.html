@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="../styles/validation.css">
+
+        <script src="../scripts/validation.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script>
+
+
+        <link rel="shortcut icon" type="image/png" href="../images/favicon.png">
+        <title>Orinoco - Mon panier</title>
+    </head>
+    <body>
+        <header class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-2 header justify-content-center">
+                <img src="../images/logo-orinoco.png" alt="Logo de Orinoco" />
+                <h1>Orinoco</h1>
+            </div>
+        </header>
+        <main class="container">
+            <section id="validation-content">
+                <h2>Validation de votre commande</h2>
+                <p>Nous vous remercions de votre confiance. Votre commande a été prise en compte sous l'identifiant <span id="id"></span> 
+                et validée le <span id="dateTime"></span>.
+                Vous trouverez ci-dessous un récapitulatif de vos achats.</p>
+                <section>
+                    <h3>Information de livraison</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th colspan='2'>Informations personnelles</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contact-content">
+    
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>Détail de votre commande</h3>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Identifiant</th>
+                            <th>Aperçu</th>
+                            <th>Designation</th>
+                            <th>Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody id="order-content">
+    
+                        </tbody>
+                    </table>
+                </section>               
+            </section>
+            <div class="row justify-content-center">
+                <a href="../index.html" type="button" class="btn btn-dark"><i class="fa fa-undo"></i>Retour</a>
+            </div>
+        </main>
+        <footer class="row">
+            <div class="col-lg-12 footer">
+                <img src="../images/OC-logo.png" alt="Logo d'OpenClassrooms" />
+                <p>Projet 5 - Orinoco</p>
+            </div>
+        </footer>
+    </body>
+</html>

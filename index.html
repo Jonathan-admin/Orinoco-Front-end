@@ -7,11 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
-        <link rel="stylesheet" type="text/css" href="styles/productsList.css">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script>
         <script src="scripts/afficher-liste-produits.js" defer></script>
 
@@ -25,24 +24,29 @@
                 <h1>Orinoco</h1>
             </div>
         </header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/index.html">Articles disponibles<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/templates/cart.html">Mon panier</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <main class="container">
-            <section>
-                <h2>Liste des produits disponibles à la vente</h2>
+        <div class="row">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light col-lg-12">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div>
+                    <img src="images/favicon.png" alt="Le panier de produits" /><span class="cart">0</span>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Articles disponibles<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/templates/cart.html">Mon panier <img src="images/favicon.png" alt="Le panier de produits" /><span class="cart">0</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <main class="main row">
+            <section class="container">
+                <h2>Produits disponibles à la vente</h2>
     
                 <table class="table table-striped">
                     <thead>
@@ -62,7 +66,10 @@
         <footer class="row">
             <div class="col-lg-12 footer">
                 <img src="images/OC-logo.png" alt="Logo d'OpenClassrooms" />
-                <p>Projet 5 - Orinoco</p>
+                <ul>
+                    <li>Projet 5</li>
+                    <li>Orinoco</li>
+                </ul>
             </div>
         </footer>
     </body>

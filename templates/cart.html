@@ -7,9 +7,7 @@
         
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <link rel="stylesheet" type="text/css" href="../styles/styles.css">
-        <link rel="stylesheet" type="text/css" href="../styles/cart.css">
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script>
@@ -26,65 +24,64 @@
                 <h1>Orinoco</h1>
             </div>
         </header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index.html">Articles disponibles<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/templates/cart.html">Mon panier</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <main class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light col-lg-12">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div>
+                    <img src="../images/favicon.png" alt="Le panier de produits" /><span class="cart">0</span>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Articles disponibles<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/templates/cart.html">Mon panier <img src="../images/favicon.png" alt="Le panier de produits" /><span class="cart">0</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <main class="main container">
             <section id="card-content">
                 <h2>Votre panier</h2>
                 <div id="nbElement"></div>
                 <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Identifiant</th>
-                        <th>Désignation</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
-                        <th>Total</th>
-                    </tr>
+                    <thead id="headCart">
+
                     </thead>
-                    <tbody id="content-list">
+                    <tbody id="contentCart">
 
                     </tbody>
-                </table>
+                </table> 
             </section>
             <section id="form-content">
                 <h2>Formulaire de validation de votre commande</h2>
-                <form action="http://localhost:3000/api/cameras/order" method="post">
+                <form id="myForm">
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <label for="familyname">Nom</label>
-                            <input type="text" id="familyname" name="familyname" class="form-control" required>
+                            <label for="familyname">Nom *</label>
+                            <input type="text" id="familyname" name="lastName" class="form-control" required>
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="firstname">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" class="form-control" required>
+                            <label for="firstname">Prénom *</label>
+                            <input type="text" id="firstname" name="firstName" class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <label for="adress">Adresse postale</label>
-                            <input type="text" id="adress" name="adress" class="form-control" required>
+                            <label for="adress">Adresse postale *</label>
+                            <input type="text" id="adress" name="address" class="form-control" required>
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="city">Ville</label>
+                            <label for="city">Ville *</label>
                             <input type="text" id="city" name="city" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mail">Adresse e-mail</label>
+                        <label for="mail">Adresse e-mail *</label>
                         <input type="email" id="mail" name="email" class="form-control" required>
                     </div>
                     <input type="submit" id="submit" value="Soumettre" class="btn btn-light"/>
@@ -94,7 +91,10 @@
         <footer class="row">
             <div class="col-lg-12 footer">
                 <img src="../images/OC-logo.png" alt="Logo d'OpenClassrooms" />
-                <p>Projet 5 - Orinoco</p>
+                <ul>
+                    <li>Projet 5</li>
+                    <li>Orinoco</li>
+                </ul>
             </div>
         </footer>
     </body>
