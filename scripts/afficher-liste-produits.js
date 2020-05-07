@@ -1,11 +1,11 @@
 const regex = /^[a-z0-9]{24}$/;
 const som = document.getElementsByClassName("cart");
+const contentList = document.getElementById("content-list");
 
 window.onload = function () { 
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         var tableContent = "";
-        const contentList = document.getElementById("content-list");
         if (this.readyState == XMLHttpRequest.DONE) {
             switch (this.status) {
                 case 200:

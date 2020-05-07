@@ -2,19 +2,15 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-       
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <link rel="stylesheet" type="text/css" href="../styles/styles.css">
-        <link rel="stylesheet" type="text/css" href="../styles/validation.css">
 
         <script src="../scripts/validation.js" defer></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" defer></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script>
-
 
         <link rel="shortcut icon" type="image/png" href="../images/favicon.png">
         <title>Orinoco - Mon panier</title>
@@ -26,7 +22,7 @@
                 <h1>Orinoco</h1>
             </div>
         </header>
-        <main class="container">
+        <main class="main container">
             <section id="validation-content">
                 <h2>Validation de votre commande</h2>
                 <p>Nous vous remercions de votre confiance. Votre commande a été prise en compte sous l'identifiant <span id="id"></span> 
@@ -48,13 +44,8 @@
                 <section>
                     <h3>Détail de votre commande</h3>
                     <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Identifiant</th>
-                            <th>Aperçu</th>
-                            <th>Designation</th>
-                            <th>Prix</th>
-                        </tr>
+                        <thead id="headCart">
+                       
                         </thead>
                         <tbody id="order-content">
     
@@ -69,7 +60,10 @@
         <footer class="row">
             <div class="col-lg-12 footer">
                 <img src="../images/OC-logo.png" alt="Logo d'OpenClassrooms" />
-                <p>Projet 5 - Orinoco</p>
+                <ul>
+                    <li>Projet 5</li>
+                    <li>Orinoco</li>
+                </ul>
             </div>
         </footer>
     </body>

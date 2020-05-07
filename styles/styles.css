@@ -12,6 +12,10 @@ html {
     min-height: 100%;
 }
 
+a, i, #content-list tr > td, #lenses, #quantity, input {
+    cursor: pointer;
+}
+
 main, nav, footer {
     font-family: segoeprb, Arial, Helvetica, sans-serif;
 }
@@ -243,9 +247,17 @@ i.fa-times-circle {
     margin-right: 20px;
 }
 
+.table td {
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+#contact-content tr:nth-child(5) > td:nth-child(2) {
+    word-break: break-all;
+}
+
 .ref > td, .total > td{
     background-color: black;
-    word-break: break-all;
     color: white;
 }
 
@@ -259,6 +271,22 @@ i.fa-times-circle {
 
 .displayTotal {
     text-align: left;
+}
+
+#order-content img{
+    max-width: 200px;
+    height: auto;
+}
+
+#validation-content h3 {
+    font-size: 22px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+tbody.borderTable {
+    border: 1px solid black;
 }
 
 

@@ -1,11 +1,10 @@
 const nbElement = document.createElement("p");
 const regex = /^[a-z0-9]{24}$/;
-var resp = true;
 const card = document.getElementById('nbElement');
 const som = document.getElementsByClassName("cart");
 const form = document.getElementById("myForm");
 const submit = document.getElementById("submit");
-const headerCart = document.getElementById("contentCart");
+const headerCart = document.getElementById("headCart");
 const contentCart = document.getElementById("contentCart");
 var responsiveTable = window.matchMedia('(max-width: 800px)');
 
@@ -62,6 +61,7 @@ displayNbProductCart(sommeInCart(som));
 
 
 function responsiveTableDisplay() {
+    var resp = 0;
     if(responsiveTable.matches) {
         resp = false;
     } else {
@@ -78,10 +78,10 @@ function display(flag) {
         if(regex.test(localStorage.key(index))) {
             var obj = JSON.parse(localStorage.getItem(localStorage.key(index)));
             if(flag) {
-                headCart.innerHTML = "<tr class='rref'><th>Référence</th><th>Désignation</th><th>Prix</th><th>Quantité</th><th>Total</th></tr>";
+                headCart.innerHTML = "<tr><th>Référence</th><th>Désignation</th><th>Prix</th><th>Quantité</th><th>Total</th></tr>";
                 contentCart.innerHTML += "<tr><td>"+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td><td>"+obj[0].name+"</td><td>"+obj[0].price+"</td><td>"+obj[1]+"</td><td>"+parseInt(+obj[0].price*obj[1])+"€</td></tr>";
             } else {
-                contentCart.innerHTML += "<tr class='ref'><td colspan='2'>Référence "+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td></tr>"
+                contentCart.innerHTML += "<tr class='ref'><td colspan='2'>"+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td></tr>"
                 +"<tr><td>Désignation</td><td>"+obj[0].name+"</td></tr>"
                 +"<tr><td>Prix à l'unité</td><td>"+obj[0].price+"</td></tr>"
                 +"<tr><td>Quantité</td><td>"+obj[1]+"</td></tr>"  
@@ -92,7 +92,7 @@ function display(flag) {
     }
     var trt = document.createElement("tr");
     trt.classList.add("total");
-    if(resp) {
+    if(flag) {
         contentCart.appendChild(trt).innerHTML = "<td colspan='5'>Montant total à payer :  "+total+"€ TTC</td>";
     } else {
         contentCart.appendChild(trt).innerHTML = "<td colspan='2' class='displayTotal'>Montant total de la commande : "+total+"€ TTC</td>";
