@@ -6,6 +6,7 @@
 var idProduct = this.sessionStorage.getItem("idProduct");
 var objProduct = {};
 var quantity = 1;
+const regexQuantity = /^([1-9]|10)$/;
 const contentPicture = document.getElementById("picture");
 const contentDesc = document.getElementById("desc");
 const addCart = document.getElementById("addCart");                     // Variables globales
@@ -52,9 +53,15 @@ window.onload = function () {           // Exécution de ce code au chargement d
             }
                     // Ajout d'un listener sur le input quantité et calcul du montant total suivant la quantité choisie lors d'un clic
             const inputNumberQauntity = document.getElementById("quantity");
-            inputNumberQauntity.addEventListener("click", function(event) {
-                document.querySelector("td>span").innerHTML = inputNumberQauntity.value*objProduct.price+"€";
-                quantity = inputNumberQauntity.value;
+            inputNumberQauntity.addEventListener("input", function(event) {
+                if(checkQuantityInput(inputNumberQauntity.value)) {
+                    modalDisplay.removeAttribute("disabled");  
+                    document.querySelector("td>span").innerHTML = inputNumberQauntity.value*objProduct.price+"€";
+                    quantity = inputNumberQauntity.value;
+                } else {
+                    modalDisplay.setAttribute("disabled",true);
+                }
+
             });
         })
                     // Traitement de l'erreur récupérée lorsque la promesse n'a pas abouti
@@ -97,7 +104,14 @@ addProductInCart = (obj,qty) => {
     }
     localStorage.setItem(obj._id,JSON.stringify(val));  // Créer une nouvelle variable localStorage ayant pour key le id du produit
 }
-
+/*********************************************Fonction de validation de la quantité de produits choisie*****************************************************************************/
+const checkQuantityInput = qty => {        
+    if(regexQuantity.test(qty)) {
+        return true;
+    } else {
+        return false;
+    }                               // Retourne false si le nombre n'est pas compris entre 1 et 10
+}
 
 
 
