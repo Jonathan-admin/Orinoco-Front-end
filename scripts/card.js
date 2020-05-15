@@ -63,7 +63,7 @@ window.onload = function () {           // Exécution de ce code au chargement d
                 window.location.href = "/templates/validation.html";  // puis on redirige vers la page de validation
             })
             .catch(error => {                   // Si la promesse a été rejetée alors on affiche l'erreur
-                msgLoading.innerHTML =  error;
+                msgLoading.innerHTML = "<p><i class='fa fa-times-circle'></i> "+error+"</p>";
             }); 
     });
     responsiveTable.addEventListener("change", function(event) {   // Ajout d'un listener sur le media query
@@ -84,22 +84,22 @@ function display(flag) {
             if(flag) {   // Si la résolution est inférieure à 800px alors on affiche ce tableau
                 contentCart.innerHTML += "<tr class='ref'><td colspan='2'>"+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td></tr>"
                 +"<tr><td>Désignation</td><td>"+obj[0].name+"</td></tr>"
-                +"<tr><td>Prix à l'unité</td><td>"+obj[0].price+"€</td></tr>"
+                +"<tr><td>Prix à l'unité</td><td>"+getPrice(obj[0].price,1)+"€</td></tr>"
                 +"<tr><td>Quantité</td><td>"+obj[1]+"</td></tr>"  
-                +"<tr><td>Prix total</td><td>"+parseInt(+obj[0].price*obj[1])+"</td></tr>";         // Calcul et conversion en int prix*quantité    
+                +"<tr><td>Prix total</td><td>"+getPrice(obj[0].price,obj[1])+"€</td></tr>";         // Calcul et conversion en int prix*quantité    
             } else {        // Si la résolution est supérieure à 800px alors on affiche ce tableau
                 headCart.innerHTML = "<tr><th>Référence</th><th>Désignation</th><th>Prix</th><th>Quantité</th><th>Total</th></tr>";
-                contentCart.innerHTML += "<tr><td>"+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td><td>"+obj[0].name+"</td><td>"+obj[0].price+"€</td><td>"+obj[1]+"</td><td>"+parseInt(+obj[0].price*obj[1])+"€</td></tr>";
+                contentCart.innerHTML += "<tr><td>"+obj[0]._id+" <i class='fa fa-trash' title='Supprimer cette référence du panier'></i></td><td>"+obj[0].name+"</td><td>"+getPrice(obj[0].price,1)+"€</td><td>"+obj[1]+"</td><td>"+getPrice(obj[0].price,obj[1])+"€</td></tr>";
             }
-            total +=parseInt(+obj[0].price*obj[1]); // Calcul du total prix*quantité
+            total +=parseFloat(getPrice(obj[0].price,obj[1])); // Calcul du total prix*quantité
         }
     }
     var trt = document.createElement("tr");
     trt.classList.add("total");
     if(flag) {   // Si la résolution est inférieure à 800px alors on affiche ce contenu
-        contentCart.appendChild(trt).innerHTML = "<td colspan='5'>Montant total à payer :  "+total+"€ TTC</td>";
+        contentCart.appendChild(trt).innerHTML = "<td colspan='2'>Montant total à payer :  "+total.toFixed(2).replace(".",",")+"€ TTC</td>";
     } else {    // Si la résolution est supérieure à 800px alors on affiche ce contenu
-        contentCart.appendChild(trt).innerHTML = "<td colspan='2' class='displayTotal'>Montant total de la commande : "+total+"€ TTC</td>";
+        contentCart.appendChild(trt).innerHTML = "<td colspan='5' class='displayTotal'>Montant total de la commande : "+total.toFixed(2).replace(".",",")+"€ TTC</td>";
     }
     var eltRemove = document.getElementsByClassName("fa-trash");
     for (var i = 0; i < eltRemove.length; i++) {   // Ajout d'un listener sur les icones poubelle pour supprimerun produit

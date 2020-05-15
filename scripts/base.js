@@ -38,6 +38,11 @@ const responsiveTableDisplay = () => {
         return false;  
     }
 }
+/******************************************Fonction de formatage du prix du produit***************************************************************************************************/
+const getPrice = (price,qty) => { 
+    return parseFloat((price*qty)/100).toFixed(2).replace(".",",");
+}       // Retourne un prix au format XX,XX, le point du nombre flottant est remplacé par une virgule.
+
 /**********************************************Fonction d'envoi de requête GET à l'API backend************************************************************************************ */
 let sendRequest = (method,url,data) => { 
     return new Promise((resolve,reject) => {
@@ -49,25 +54,26 @@ let sendRequest = (method,url,data) => {
                     resolve(request.responseText);          // Promesse résolue si le code HTTP de la requête est 200
                     break;
                 case 404:                                   // Pour les autres codes HTTP, la promesse est rejetée même si la requête est à l'état DONE
-                    reject("<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i>Erreur HTTP 404: La ressource que vous demandez n'existe pas.</td></tr>");        
+                    reject("Erreur HTTP 404: La ressource que vous demandez n'existe pas.");        
                     break;
                 case 500:
-                    reject("<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i>Erreur HTTP 500: La requête envoyée au serveur n'a pas aboutie en raison d'un problème rencontré durant l'exécution des scripts.</td></tr>");       
+                    reject("Erreur HTTP 500: La requête envoyée au serveur n'a pas aboutie en raison d'un problème rencontré durant l'exécution des scripts.");       
                     break;
                 default:
                     if(request.status>200 && request.status<300) {
                         resolve(request.responseText);
                     } else {
-                        reject("<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i>Un incident technique est survenue lors de l'affichage de la page. Merci de ré-essayer ultérieurement.</td></tr>");       
+                        reject("Un incident technique est survenue lors de l'affichage de la page. Merci de ré-essayer ultérieurement.");       
                         break; 
                     } 
             }
         }
         request.onerror = () => {                           // Promesse rejetée en cas d'erreur ou absence de réponse du serveur
-            if(request.status===0) {
-                reject("<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i>Oups! Le serveur ne semble pas répondre. Merci de réessayer ultérieurement.</td></tr>");
+            if(request.status===0) { 
+                reject("Oups! Le serveur ne semble pas répondre. Merci de réessayer ultérieurement.");
+            } else {
+                reject(request.statusText);
             }
-            reject("<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i> "+request.statusText+"</td></tr>");
         }
         if(method=="POST") {
             request.setRequestHeader("Content-Type", "application/json");

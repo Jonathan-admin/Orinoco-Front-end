@@ -43,21 +43,21 @@ window.onload = function () {           // Exécution de ce code au chargement d
                     "<h4>Prix TTC</h4>"+
                     "<table class='table table-striped' id='table-price'>"+
                     "<thead><tr><th>Quantité</th><th>Prix</th></tr></thead>"+
-                    "<tbody><tr><td>A l'unité</td><td>"+objProduct.price+"€</td></tr>"+
+                    "<tbody><tr><td>A l'unité</td><td>"+getPrice(objProduct.price,1)+"€</td></tr>"+
                     "<tr><td><input type='number' id='quantity' name='quantity' min='1' max='10' value='1'/></td>"+
-                    "<td><span>"+objProduct.price+"€</span></td></tr></tbody></table";  
+                    "<td><span>"+getPrice(objProduct.price,1)+"€</span></td></tr></tbody></table";  
 
             const lensesChoice = document.getElementById("lenses");  // Remplissage en option du select
             for(var i=0 in objProduct.lenses) {
                 lensesChoice.innerHTML += "<option value='val"+i+"'>"+objProduct.lenses[i]+"</option>";
             }
                     // Ajout d'un listener sur le input quantité et calcul du montant total suivant la quantité choisie lors d'un clic
-            const inputNumberQauntity = document.getElementById("quantity");
-            inputNumberQauntity.addEventListener("input", function(event) {
-                if(checkQuantityInput(inputNumberQauntity.value)) {
+            const inputNumberQuantity = document.getElementById("quantity");
+            inputNumberQuantity.addEventListener("input", function(event) {
+                if(checkQuantityInput(inputNumberQuantity.value)) {
                     modalDisplay.removeAttribute("disabled");  
-                    document.querySelector("td>span").innerHTML = inputNumberQauntity.value*objProduct.price+"€";
-                    quantity = inputNumberQauntity.value;
+                    document.querySelector("td>span").innerHTML = getPrice(objProduct.price,inputNumberQuantity.value)+"€";
+                    quantity = inputNumberQuantity.value;
                 } else {
                     modalDisplay.setAttribute("disabled",true);
                 }
@@ -66,7 +66,7 @@ window.onload = function () {           // Exécution de ce code au chargement d
         })
                     // Traitement de l'erreur récupérée lorsque la promesse n'a pas abouti
         .catch(error => { 
-            msgLoading.innerHTML =  error;
+            msgLoading.innerHTML =  "<p><i class='fa fa-times-circle'></i> "+error+"</p>";
         });
 }   
 modalDisplay.addEventListener("click", function(event) { // Ajout d'un listener sur le bouton ajout produit pour afficher le modal
@@ -85,9 +85,9 @@ addCart.addEventListener("click", function(event) {  // Ajout d'un listener sur 
 displayModalConfirmation = (objProduct,qty) => {
     let modalBodyParagraph = document.createElement("p");        // Affichage du modal de confirmation des achats sur le point d'être ajoutés au panier
     if(qty == 1) {
-        modalBodyParagraph.innerHTML = "Vous êtes sur le point d'ajouter au panier la caméra "+objProduct.name+" d'un montant de "+objProduct.price+"€. Confirmez-vous cet achat?";
+        modalBodyParagraph.innerHTML = "Vous êtes sur le point d'ajouter au panier la caméra "+objProduct.name+" d'un montant de "+getPrice(objProduct.price,1)+"€. Confirmez-vous cet achat?";
     } else {
-        modalBodyParagraph.innerHTML = "Vous êtes sur le point d'ajouter "+qty+" caméras "+objProduct.name+" à votre panier d'un montant total de "+objProduct.price*qty+"€ (dont "+objProduct.price+"€ l'unité). Confirmez- vous l'achat de ces "+qty+" caméras?";
+        modalBodyParagraph.innerHTML = "Vous êtes sur le point d'ajouter "+qty+" caméras "+objProduct.name+" à votre panier d'un montant total de "+getPrice(objProduct.price,qty)+"€ (dont "+getPrice(objProduct.price,1)+"€ l'unité). Confirmez-vous l'achat de ces "+qty+" caméras?";
     }
     modalBody.appendChild(modalBodyParagraph);
     addCart.setAttribute("data-dismiss","modal");

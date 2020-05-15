@@ -34,13 +34,13 @@ function display(flag) {
             orderContent.innerHTML += "<tr class='ref'><td colspan='2'>Référence "+responseObj.products[index]._id+"</td></tr>"
             +"<tr><td>Aperçu</td><td><img src='"+responseObj.products[index].imageUrl+"'/></td></tr>"
             +"<tr><td>Désignation</td><td>"+responseObj.products[index].name+"</td></tr>"
-            +"<tr><td>Prix</td><td>"+responseObj.products[index].price+"€</td></tr>";
+            +"<tr><td>Prix</td><td>"+getPrice(responseObj.products[index].price,1)+"€</td></tr>";
         } else {            // Si la résolution est supérieure à 800px alors on affiche ce tableau
             orderContent.classList.remove("borderTable");
             headCart.innerHTML = "<tr><th>Référence</th><th>Aperçu</th><th>Designation</th><th>Prix</th></tr>";
-            orderContent.innerHTML += "<td>"+responseObj.products[index]._id+"</td><td><img src='"+responseObj.products[index].imageUrl+"'/></td><td>"+responseObj.products[index].name+"</td><td>"+responseObj.products[index].price+"€</td>";
+            orderContent.innerHTML += "<td>"+responseObj.products[index]._id+"</td><td><img src='"+responseObj.products[index].imageUrl+"'/></td><td>"+responseObj.products[index].name+"</td><td>"+getPrice(responseObj.products[index].price,1)+"€</td>";
         }
-        total += responseObj.products[index].price;         // Calcul du total prix*quantité
+        total += parseFloat(getPrice(responseObj.products[index].price,1));         // Calcul du total prix*quantité
     }
     var iterator = 0;
     for (const key in responseObj.contact) {
@@ -53,9 +53,9 @@ function display(flag) {
     var trt = document.createElement("tr");
     trt.classList.add("total");
     if(flag) {      // Si la résolution est inférieure à 800px alors on affiche ce contenu
-        orderContent.appendChild(trt).innerHTML = "<td colspan='4'>Montant total à payer : "+total+"€ TTC</td>"; 
+        orderContent.appendChild(trt).innerHTML = "<td colspan='2'>Montant total à payer : "+total.toFixed(2).replace(".",",")+"€ TTC</td>"; 
     } else {        // Si la résolution est supérieure à 800px alors on affiche ce contenu
-        orderContent.appendChild(trt).innerHTML = "<td colspan='2' class='displayTotal'>Montant total à payer : "+total+"€ TTC</td>"; 
+        orderContent.appendChild(trt).innerHTML = "<td colspan='4' class='displayTotal'>Montant total à payer : "+total.toFixed(2).replace(".",",")+"€ TTC</td>"; 
     }
     id.innerHTML = responseObj.orderId;
     dateTime.innerHTML = objDate.getDate()+"/"+(objDate.getMonth()+1)+"/"+objDate.getFullYear()+" à "+objDate.getHours()+":"+objDate.getMinutes();

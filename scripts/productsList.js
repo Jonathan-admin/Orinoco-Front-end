@@ -18,7 +18,7 @@ window.onload = function () {  // Code à exécuter au chargement de la page
             for (var i = 0; i < products.length; i++) {     // Parcours de l'objet et affichage des propriétés
                 tableContent+= '<tr class="items" id="'+products[i]._id+'"><td><img src="'+products[i].imageUrl+'" alt="Photo produit caméra"'+i+'/></td>';
                 tableContent+= "<td>"+products[i].name+"</td>";
-                tableContent+= "<td>"+products[i].price+"€</td></tr></a>";
+                tableContent+= "<td>"+getPrice(products[i].price,1)+"€</td></tr></a>";
             }
             contentList.innerHTML =  tableContent; 
             const items = document.querySelectorAll("#content-list tr");        // Ajout des évènements clic sur chaque ligne de la liste produit
@@ -30,8 +30,8 @@ window.onload = function () {  // Code à exécuter au chargement de la page
             }
         })
 
-        .catch(error => {                        // Traitement des données suite à la promesse non résolue
-            contentList.innerHTML =  error;
+        .catch(error => {                        // Traitement des données suite à la promesse non résolue 
+            contentList.innerHTML =  "<tr class='msg'><td colspan='3'><i class='fa fa-times-circle'></i> "+error+"</td></tr>";
         });
         
     displayNbProductInCart(som,getNbProduct());    // Affiche le nombre de produit sur les icones du panier
