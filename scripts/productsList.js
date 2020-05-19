@@ -24,8 +24,8 @@ window.onload = function () {  // Code à exécuter au chargement de la page
             const items = document.querySelectorAll("#content-list tr");        // Ajout des évènements clic sur chaque ligne de la liste produit
             for (let index = 0; index < items.length; index++) {
                 items[index].addEventListener("click", function(event) {
-                    sessionStorage.setItem("idProduct",items[index].attributes[1].value); // Enregiste le id du produit sélectionné après le clic dans une variable de session
-                    window.location.href = "/templates/product.html";                      // Puis charge la page fiche produit
+                    document.location.href = "/templates/product.html?id="+items[index].attributes[1].value;                      // Puis redirige vers la page fiche produit
+                    // Injecte le id et sa valeur dans l'url en tant que variable (entre ? et la fin de l'url)
                 });
             }
         })

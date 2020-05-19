@@ -14,19 +14,20 @@ const msgLoading = document.getElementById("msgLoading");
 const contentProduct = document.getElementById("product");
 const modalBody = document.getElementById("modalBody");
 const modalDisplay = document.getElementById("modalDisplay");
+const searchParamsUrl = new URL(document.location).searchParams;  // Récupère la propriété searchParams contenant toute la partie variable de l'url
 /*________________________________________________________________________________________________________________________________________________________________________________
                                                                     Code de base 
                                                                                                                                                                                     */
 msgLoading.innerHTML =  "<img src='../images/loading.gif' alt='image de chargement' id='loading'/>"; 
 // Moulinette en attendant la réponse de la requête
 
-
 window.onload = function () {           // Exécution de ce code au chargement de la page
 
     displayNbProductInCart(som,getNbProduct());   // Affiche le nombre de produit dans le panier
     contentProduct.nextElementSibling.style.display = "none"; 
 
-    sendRequest("GET","http://localhost:3000/api/cameras/"+idProduct,"")   // Appel de la fonction avec promise
+                                                            // Récupère la variable de l'url dont la clé est "id"
+    sendRequest("GET","http://localhost:3000/api/cameras/"+searchParamsUrl.get("id"),"")   // Appel de la fonction avec promise
 
         .then(data => {                                          // Récupération des retournées depuis que la promesse est résolue
             msgLoading.style.display = "none";
