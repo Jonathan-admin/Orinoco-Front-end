@@ -39,8 +39,8 @@ const responsiveTableDisplay = () => {
     }
 }
 /******************************************Fonction de formatage du prix du produit***************************************************************************************************/
-const getPrice = (price,qty) => { 
-    return parseFloat((price*qty)/100).toFixed(2).replace(".",",");
+const getPrice = (price,qty) => {
+    return ((price*qty)/100).toFixed(2).replace(".",",");
 }       // Retourne un prix au format XX,XX, le point du nombre flottant est remplacé par une virgule.
 
 /**********************************************Fonction d'envoi de requête GET à l'API backend************************************************************************************ */

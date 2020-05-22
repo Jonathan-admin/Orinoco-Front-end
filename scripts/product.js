@@ -62,7 +62,6 @@ window.onload = function () {           // Exécution de ce code au chargement d
                 } else {
                     modalDisplay.setAttribute("disabled",true);
                 }
-
             });
         })
                     // Traitement de l'erreur récupérée lorsque la promesse n'a pas abouti
@@ -98,7 +97,7 @@ addProductInCart = (obj,qty) => {
     let val = [obj,qty]; 
     for (let index = 0; index < localStorage.length; index++) {     // On parcours le localStorage pour savoir si le produit existe déjà
         var key = localStorage.key(index); 
-        if(obj._id==key) {      //Si le produit existe déjà dans le panier alors on incrémente sa quantité
+        if(obj._id==key) {      //Si le produit existe déjà dans le panier alors on additionne sa quantité
             val = [obj,parseInt(JSON.parse(localStorage.getItem(obj._id))[1])+parseInt(qty)];
             index =  localStorage.length; 
         }
